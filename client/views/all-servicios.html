@@ -1,0 +1,29 @@
+<div class="actions" ng-show="categoria">
+  <h1>Selecciona Servicios de {{categoria.nombre}}</h1>
+</div>
+ <div class="actions" ng-hide="categoria">
+  <h1>Seleciona un Servicio {{categoria.nombre}}</h1>
+</div>
+
+<hr>
+<form name="servicioForm" novalidate ng-submit="addServicio()">
+  <div class="form-group"
+      ng-class="{'has-error': servicioForm.content.$invalid
+        && servicioForm.nombre.$dirty}">
+    <input type="text" class="form-control focus" name="nombre"
+        placeholder="Nombre Servicio" autocomplete="off" required
+        ng-model="newServicio.nombre">
+    <span class="has-error control-label" ng-show="
+        servicioForm.nombre.$invalid && servicioForm.nombre.$dirty">
+      Servicio debe tener un nombre.
+    </span>
+  </div>
+  <button class="btn btn-default" ng-disabled="ServicioForm.$invalid">Agregar</button>
+</form>
+<hr>
+<div class="list-group">
+  <a class="list-group-item" ng-repeat="servicio in servicios">
+    <strong>{{servicio.nombre}}</strong> :  {{servicio.descripcion}}
+    <p>Costo: <strong>{{servicio.costo|currency}}</strong> &nbsp; Duracion: <strong>{{servicio.duracion}}</strong> minutos</p>
+  </a>
+</div>

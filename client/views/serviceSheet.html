@@ -1,0 +1,10 @@
+<md-bottom-sheet class="md-grid" >
+<md-list>
+    <md-list-item ng-repeat="action in cp.actions" >
+      <md-button href="{{action.value}}" class="md-grid-item-content" ng-click="cp.Contacta(action.name)">
+        <md-icon md-svg-src="{{action.icon}}"></md-icon>
+        <div class="md-grid-text">{{action.name}}</div>
+      </md-button>
+    </md-list-item>
+</md-list>
+</md-bottom-sheet>

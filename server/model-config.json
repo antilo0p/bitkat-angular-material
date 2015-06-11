@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ]
+  },
+  "User": {
+    "dataSource": "mongoDB",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "mongoDB",
+    "public": true 
+  },
+  "ACL": {
+    "dataSource": "mongoDB",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mongoDB",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "mongoDB",
+    "public": false
+  },
+  "cliente": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "empresa": {
+    "dataSource": "mongoDB",
+    "public": true 
+  },
+  "categoria": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "servicio": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "proveedor": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "reservacion": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "opinion": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "admin": {
+    "dataSource": "mongoDB",
+    "public": true 
+  },
+ "Email": {
+    "dataSource": "emailDs"
+  }
+}

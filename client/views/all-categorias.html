@@ -1,0 +1,26 @@
+<h1>Escoge una categoria</h1>
+<hr>
+<form name="categoriaForm" novalidate ng-submit="addCategoria()">
+  <div class="form-group"
+      ng-class="{'has-error': categoriaForm.content.$invalid
+        && todoForm.nombre.$dirty}">
+    <input type="text" class="form-control focus" name="nombre"
+        placeholder="Nombre Categoria" autocomplete="off" required
+        ng-model="newCategoria.nombre">
+    <input type="hidden" class="form-control " name="empresaId"
+        autocomplete="off" ng-model="newCategoria.empresaId" value="{{ $root.empresa.id}}">
+    <span class="has-error control-label" ng-show="
+        categoriaForm.nombre.$invalid && categoriaForm.nombre.$dirty">
+      Categoria debe tener un nombre.
+    </span>
+  </div>
+  <button class="btn btn-default" ng-disabled="categoriaForm.$invalid">Agregar</button>
+</form>
+<hr>
+<div class="list-group">
+  <div class="list-group-item" ng-repeat="categoria in categorias">
+    <a ui-sref="servicios-de-categoria({ id: categoria.id })"> {{categoria.nombre}} - {{categoria.id}}&nbsp; - {{ $root.empresa.id }}</a>
+    <i class="glyphicon glyphicon-remove pull-right"
+        ng-click="removeCategoria(categoria)"></i>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<md-bottom-sheet class="md-grid">
+    <md-subheader>
+        <span class="name">{{cp.service_target.nombre}} esta {{ cp.slots.disponibilidad[0].estado  }}</span>
+    </md-subheader>
+<md-content>
+<md-list>
+    <md-list-item ng-repeat="slot in cp.slots.disponibilidad[1].slots" >
+   <md-button class="md-accent" ng-click="cp.submitReserva(slot)" >
+      {{slot|date:"dd/MM/yy h:mma"}}
+    </md-button>
+    </md-list-item>
+</md-list>
+</md-content>
+</md-bottom-sheet>

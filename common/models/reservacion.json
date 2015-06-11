@@ -1,0 +1,99 @@
+{
+  "name": "reservacion",
+  "plural": "reservaciones",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nota": {
+      "type": "string"
+    },
+    "inicio": {
+      "type": "date",
+      "required": true
+    },
+    "fin": {
+      "type": "date",
+      "required": true
+    },
+    "fecha_creacion": {
+      "type": "date"
+    },
+    "fecha_cancelacion": {
+      "type": "date"
+    },
+    "fecha_actualizacion": {
+      "type": "date"
+    },
+    "status": {
+      "type": "number"
+    },
+    "slot": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "cliente": {
+      "type": "belongsTo",
+      "model": "cliente",
+      "foreignKey": ""
+    },
+    "servicio": {
+      "type": "belongsTo",
+      "model": "servicio",
+      "foreignKey": ""
+    },
+    "proveedor": {
+      "type": "belongsTo",
+      "model": "proveedor",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+   {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "*"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "*"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "owner",
+      "permission": "ALLOW",
+      "property": "*"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "superadmin",
+      "permission": "ALLOW",
+      "property": "*"
+    }
+  ],
+  "methods": []
+}

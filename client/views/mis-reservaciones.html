@@ -1,0 +1,15 @@
+<section>
+ <div class="actions" ng-show="currentUser">
+  <h1>Mis Reservaciones</h1>
+</div>
+
+  <article ng-repeat="r in reservaciones.slice().reverse()">
+    <header>
+      <h1><strong>{{r.servicio.nombre}} </strong> para el <strong>{{r.inicio| date:"dd/MM/yyyy 'a las' h:mma"}}</strong></h1>
+      <h2>{{r.proveedor.email}}</h2>
+    </header>
+    <p>Nota de la reservacion: {{r.nota}} &nbsp;
+      <i class="glyphicon glyphicon-remove" ng-click="removeReservacion(reservacion)"></i></a>
+    </p>
+  </article>
+</section>

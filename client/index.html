@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app"  >
+  <head>
+    <title>{{ $root.empresa.nombre }}</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="{{ root.empresa.descripcion }}">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="vendor/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+  </head>
+
+  <body layout="row" ng-controller="CategoriaController as ul" ng-cloack>
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z3"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')">
+      <md-toolbar class="md-whiteframe-z2">
+           <span flex></span>
+        Categorias
+             <span flex></span>
+      </md-toolbar>
+      <md-content flex role="navigation">
+        <md-list>
+           <md-list-item>
+              <md-button ui-sref="all-reservaciones"  ng-class="{'selected' : it === ul.selected }">Inicio
+             </md-button>
+           </md-list-item>
+          <md-list-item>
+              <md-button ng-click="ul.showServiceOptions($event)"  ng-class="{'selected' : it === ul.selected }">Nosotros
+             </md-button>
+           </md-list-item>
+          <md-list-item ng-repeat="it in categorias">
+              <md-button ng-click="ul.selectCategory(it)" ng-class="{'selected' : it === ul.selected }">
+              {{it.nombre}}
+            </md-button>
+         </md-list-item>
+        </md-list>
+      </md-content>
+    </md-sidenav>
+
+<div layout="column" tabIndex="-1" role="main" flex>
+  <md-toolbar layout="row" class="md-whiteframe-z3">
+    <md-button class="menu" hide-gt-sm ng-click="ul.toggleCategoriesList()" aria-label="Mostrar Categorias">
+      <md-icon md-svg-icon="menu" ></md-icon>
+    </md-button>
+     <span flex></span>
+    <h1>{{ empresa.nombre }}</h1>
+     <span flex></span>
+  <h1  hide-sm >{{ empresa.descripcion }}</h1>
+     <span flex></span>
+
+        <md-button class="md-icon-button" aria-label="Favorite">
+
+          <md-icon md-svg-icon="svg/favorite.svg" style="color: greenyellow;"></md-icon>
+        </md-button>
+  </md-toolbar>
+<div ng-if="alert">
+    <br/>
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{alert}}
+    </b>
+  </div>
+
+  <md-content flex layout-padding id="content" class="md-padding">
+    <div class="container"><md-content ng-view md-scroll-y flex layout-padding></md-content></div>
+      <h2>{{ul.selected.nombre}}</h2>
+      <p>{{ul.selected.descripcion}}</p>
+    <section class="demo-container md-whiteframe-z2 doc-content">
+      <md-toolbar class="md-accent">
+        <div class="md-toolbar-tools md-whiteframe-z1"><h3>Servicios </h3>
+        <span flex></span>
+        </div>
+      </md-toolbar>
+        <span flex></span>
+    <md-card ng-repeat="servicio in ul.selected.servicios"  layout-align="center center">
+            <img ng-src="{{imagePath}}" class="md-card-image" alt="{{servico.nombre}}" align="center">
+            <md-card-content id="servicio_reserva">
+              <h2 class="md-title">{{servicio.nombre }} </h2>
+              <p class="md-subhead"> &nbsp;&nbsp;{{ servicio.descripcion}}</p>
+              <p>  Duracion: <strong>{{ servicio.duracion }}</strong> mins. a un costo de <strong>{{ servicio.costo | currency}}</strong></p>
+            </md-card-content>
+             <div class="md-actions" layout="row" layout-align="end center">
+             <md-button  class="md-primary">Comenta</md-button>
+             <md-button class="md-raised md-accent"  md-no-ink ng-click="ul.reserva_servicio($event, servicio, null)" aria-label="reserva {{servicio.nombre}}">Reservalo</md-button>
+              </div>
+    </md-card>
+  <span flex></span>
+  </section>
+  <md-button class="contact" md-no-ink ng-click="ul.showServiceOptions($event)" aria-label="Como llegar">
+  <md-tooltip>Contactar a {{ empresa.nombre }}</md-tooltip>
+     <md-icon md-svg-src="svg/ic_place_24px.svg"></md-icon>
+   </md-button>
+        <span flex></span>
+  </md-content>
+
+    <md-sidenav class="site-sidenav md-sidenav-right md-whiteframe-z3" md-component-id="right">
+      <md-toolbar class="md-accent md-theme-light">
+        <h1 class="md-toolbar-tools md-accent">Reserva {{ slots.disponibilidad[0].servicio.nombre }}</h1>
+         <md-subheader class="md-accent">Hoy {{ slots.disponibilidad[0].estado }} </md-subheader>
+      </md-toolbar>
+      <md-content layout-padding>
+     <form name="reservacionForm" class="md-accent inputdemoIcons radioButtondemoBasicUsage">
+       <p ng-show="slots.disponibilidad[0].servicio.proveedores"><span class="md-accent">Escoge un Proveedor:</span></p>
+
+        <md-radio-group class="md-accent" ng-model="reservacion.proveedor" ng-required="true" >
+          <md-radio-button name"proveedor" ng-required="true" ng-repeat="proveedor in slots.disponibilidad[0].servicio.proveedores" class="md-accent"
+                       ng-value="proveedor.id"  md-sidenav-focus ng-checked
+                       aria-label="proveedor.nombre"><md-icon md-svg-icon="avatars:svg-3"></md-icon>
+                        {{proveedor.nombre}}
+      <div ng-hide="reservacionForm.$valid" class="md-accent"><small class="md-caption md-accent">Proveedor, Nombre e Email son requeridos</small></div>
+          </md-radio-button>
+        </md-radio-group>
+      
+      <md-list class="md-accent" flex>
+       <span class="md-accent">Mostrando horarios de: {{ slots.disponibilidad[0].mostrando| date}}</span>
+      <md-list-item class="md-accent" ng-repeat="hora in slots.disponibilidad[1].slots" flex >
+           <md-button ng-model="reservacion.inicio"
+                  class="md-raised" ng-click="reservacionForm.$valid && ul.submit_reserva($event, hora, reservacion)">{{hora|date:"h:mma"}}</md-button>
+        </md-list-item>
+      </md-list>
+
+      <md-input-container  class="md-accent">
+          <label>Para otro Dia? hoy es {{hoy| date}}</label>
+          <input name="nueva_fecha" type="date" ng-model="nueva_fecha_reserva" ng-change="ul.update_fecha()" 
+                  id="reserva_nueva_fecha" min="{{hoy|date: 'yyyy-MM-dd'}}" 
+                  ng-model-options="{ updateOn: 'blur' }" class="md-accent" />
+        </md-input-container>
+
+          <md-input-container class="md-accent">
+            <label>Nombre</label>
+            <md-icon md-svg-src="svg/ic_person_24px.svg" class="name"></md-icon>
+            <input type="text" id="reserva_nombre" ng-required="true" class="md-accent"
+                   ng-model="reservacion.nombe" />
+          </md-input-container>
+
+          <md-input-container class="md-accent" >
+            <label>Email</label>
+            <md-icon md-svg-src="svg/ic_email_24px.svg" class="email"></md-icon>
+            <input type="email" id="reserva_email" ng-required="true" class="md-accent"
+                   ng-model="reservacion.email" />
+          </md-input-container>
+
+          <md-input-container class="md-accent"|>
+            <label>Alguna nota o comentario?</label>
+            <input type="text" id="nota"  class="md-accent"
+                   ng-model="reservacion.nota" />
+          </md-input-container>
+
+        </form>
+        <md-button ng-click="ul.close_reserva()" class="md-accent">
+         Regresa
+        </md-button>
+      </md-content>
+    </md-sidenav>
+
+ </div>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-animate/angular-animate.js"></script>
+    <script src="vendor/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="vendor/angular-material/angular-material.js"></script>
+    <script src="vendor/angular-resource/angular-resource.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="js/services/lb-services.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/servicio.js"></script>
+    <script src="js/controllers/categoria.js"></script>
+    <script src="js/controllers/reservacion.js"></script>
+    <script src="js/controllers/auth.js"></script>
+    <script src="js/services/auth_cliente.js"></script>
+    <script src="js/services/auth_admin.js"></script>
+  </body>
+</html>

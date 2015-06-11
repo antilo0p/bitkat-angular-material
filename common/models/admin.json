@@ -1,0 +1,29 @@
+{
+  "name": "admin",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nombre": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "boolean"
+    },
+    "estado": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "empresa": {
+      "type": "hasOne",
+      "model": "empresa",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

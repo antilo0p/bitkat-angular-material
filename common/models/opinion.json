@@ -1,0 +1,30 @@
+{
+  "name": "opinion",
+  "plural": "opiniones",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nota": {
+      "type": "string"
+    },
+    "calificacion": {
+      "type": "number"
+    },
+    "fecha": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "reservacion": {
+      "type": "belongsTo",
+      "model": "reservacion",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

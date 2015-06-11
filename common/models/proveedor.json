@@ -1,0 +1,48 @@
+{
+  "name": "proveedor",
+  "plural": "proveedores",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "descripcion": {
+      "type": "string"
+    },
+    "especialidad": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "celular": {
+      "type": "string"
+    },
+    "foto": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "servicios": {
+      "type": "hasAndBelongsToMany",
+      "model": "servicio",
+      "foreignKey": ""
+    },
+    "reservaciones": {
+      "type": "hasMany",
+      "model": "reservacion",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}
