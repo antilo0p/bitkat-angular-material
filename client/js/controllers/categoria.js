@@ -125,14 +125,6 @@ angular
       console.log('nueva fecha:', target);
       $scope.nueva_fecha_reserva = target;
     
-      $mdDialog.show(
-         $mdDialog.alert()
-          .title('Fecha')
-          .content('Fecha cambiada a ' +  $scope.nueva_fecha_reserva)
-          .ariaLabel('Cambiar fecha Reserva')
-          .ok('Entendido!')
-          .targetEvent(event)
-         );
        reserva_servicio(null, null,$scope.nueva_fecha_reserva);
     }
 

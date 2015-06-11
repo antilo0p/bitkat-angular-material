@@ -100,6 +100,7 @@
       <md-toolbar class="md-accent md-theme-light">
         <h1 class="md-toolbar-tools md-accent">Reserva {{ slots.disponibilidad[0].servicio.nombre }}</h1>
          <md-subheader class="md-accent">Hoy {{ slots.disponibilidad[0].estado }} </md-subheader>
+          <small class="md-caption md-accent">{{ slots.disponibilidad[0].response}}</small>
       </md-toolbar>
       <md-content layout-padding>
      <form name="reservacionForm" class="md-accent inputdemoIcons radioButtondemoBasicUsage">

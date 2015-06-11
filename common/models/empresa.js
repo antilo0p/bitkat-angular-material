@@ -27,20 +27,20 @@ Empresa.status = function(companyId, fecha, cb) {
                 var s = d.toDateString();
                 var cur_time = s + ' ' + h +':'+ m;
                 if (  Date.parse(cur_time) >= Date.parse(s +' '+ instance.horario[1]) ) {
-                    response = ' We are Open today, but not available at this time of day';
+                    response = ' Hoy Abrimos, pero ya estamos cerrados a esta hora del dia';
                     dia_status = 'ABIERTO';
                     } else {
-                    response = ' We are Open today! and available at this time!';
+                    response = ' Hoy Abrimos y hay disponibilidad';
                     dia_status = 'ABIERTO';
                   }
               }
         } else {
             if ( target) {
                var s = d.toDateString();
-               response = 'We are closed on ' + s;
+               response = 'Estamos cerrados este dia:  ' + s;
                dia_status = 'CERRADO';
               } else {
-                response = 'We are closed!';
+                response = 'Estamos cerrados este dia!';
                dia_status = 'CERRADO';
               }
         }
