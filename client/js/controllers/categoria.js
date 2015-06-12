@@ -111,7 +111,7 @@ angular
         }).$promise
           .then(function(reserva){
               console.log('reservacion creada', reserva);
-              $scope.success = 'Reservacion '+ reserva.id + ' para ' +  $scope.service_target.nombre + ' creada!';
+              $scope.success = 'Reservacion '+ reserva.id + ' para ' + reserva.inicio  + ' creada.';
               success_reserva();
           });
     }
