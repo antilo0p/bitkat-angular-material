@@ -124,8 +124,8 @@ angular
       target = new Date(string_fecha);
       console.log('nueva fecha:', target);
       $scope.nueva_fecha_reserva = target;
-    
-       reserva_servicio(null, null,$scope.nueva_fecha_reserva);
+
+      reserva_servicio(null, null,$scope.nueva_fecha_reserva);
     }
 
     function success_reserva(event){

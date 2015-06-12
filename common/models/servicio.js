@@ -11,11 +11,9 @@ module.exports = function(Servicio) {
   if (fecha) {
         target = fecha;   
         is_target = true;
-        console.log('Usando como fecha: ' + new Date(target));
     } else {
        var date = new Date();
        target = date;
-       console.log('Generando fecha :' + target);
     }
    var ldate = new Date(target);
    var fin = new Date(ldate.setDate(ldate.getDate() + 1));
@@ -66,14 +64,10 @@ module.exports = function(Servicio) {
                               var current_hour = current.getHours();
                               if ( is_target ) {
                                 var slots_hr= parseInt(hr_fin) - parseInt(hr_inicio)
-                                console.log('Horas disponibles:' + hr_fin +' - ' + hr_inicio + '=' + slots_hr);
                                 var slots_avail = (slots_hr * 60) / parseInt(servicio.duracion);
-                                console.log('Slots available for service:' + slots_avail);
                               } else {
                                 var slots_hr= parseInt(hr_fin) - parseInt(current_hour)
-                                console.log('Horas disponibles:' + hr_fin +' - ' + current_hour + '=' + slots_hr);
                                 var slots_avail = (slots_hr * 60) / parseInt(servicio.duracion);
-                                console.log('Slots available for service:' + slots_avail);
                                }
                               // TODO: invalidar pedidos de fechas anteriores al dia de hoy - ya lo realiza empresa.status()
                               if ( !is_target && current_hour >= parseInt(hr_inicio) && current_hour <= parseInt(hr_fin) ) {
@@ -132,7 +126,6 @@ module.exports = function(Servicio) {
 
                             console.log('excepciones generadas:', excepciones);
                             var free_slots = later.schedule(sched).next(slots_avail, slot_start, slot_end);
-                            console.log('scheduler:', sched);
                             // console.log('Calculated slots:', free_slots);
                             var remove_slots = free_slots;
                             var remove_reservations= [];
@@ -145,7 +138,6 @@ module.exports = function(Servicio) {
                                         }
                                     }
                             });
-                            console.log('position of reservations:', remove_reservations);
                             len = remove_slots.length;
                             for(var s= 0; s < len ; s++) {
                                     if ( remove_reservations.indexOf(s) > -1 ) {
