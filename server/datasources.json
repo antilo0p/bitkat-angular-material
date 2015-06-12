@@ -6,8 +6,8 @@
   "mongoDB": {
     "port": 27017,
     "database": "bitkat_sa",
-    "username": "",
-    "password": "",
+    "username":   "",
+    "password":   "" ,
     "name": "mongoDB",
     "connector": "mongodb",
     "hostname": "localhost"

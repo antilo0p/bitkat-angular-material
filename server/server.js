@@ -17,7 +17,7 @@ app.start = function() {
 };
 
 bootOptions = { "appRootDir": __dirname, 
-                "bootScripts" : [ "/home/vagrant/fork-bitkat/bitkat_standalone/server/boot/01_script_admin.js", "/home/vagrant/fork-bitkat/bitkat_standalone/server/boot/02_script_empresa.js"] };
+                "bootScripts" : [ "./boot/01_script_admin.js", "./boot/02_script_empresa.js"] };
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
