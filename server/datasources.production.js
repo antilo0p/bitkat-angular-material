@@ -1,6 +1,6 @@
 module.exports = {
     mongoDB: {
-            connector: 'mongodb',
+            connector: 'loopback-connector-mongodb',
             url: process.env.OPENSHIFT_MONGODB_DB_URL
         }
 };

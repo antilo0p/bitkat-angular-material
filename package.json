@@ -2,9 +2,10 @@
   "name": "bitkat_standalone",
   "version": "1.0.1",
   "main": "server/server.js",
+  "author": "Antilo0p <rigreyes@gmail.com>",
   "scripts": {
     "pretest": "jshint .",
-    "start": "slc run",
+    "start": "slc run --cluster off",
     "dev": "nodemon server/server.js",
     "services": "lb-ng server/server.js client/js/services/lb-services.js"
   },
@@ -27,8 +28,8 @@
     "jshint": "^2.5.6"
   },
   "repository": {
-    "type": "",
-    "url": ""
+    "type": "git",
+    "url": "https://github.com/antilo0p/bitkat-angular-material.git"
   },
-  "description": "bitkat_standalone"
+  "description": "bitkat_standalone Loopback REST api + Angular Material"
 }

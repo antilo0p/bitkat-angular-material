@@ -9,7 +9,7 @@
     "username":   "",
     "password":   "" ,
     "name": "mongoDB",
-    "connector": "mongodb",
+    "connector": "loopback-connector-mongodb",
     "hostname": "localhost"
   },
   "emailDs": {
