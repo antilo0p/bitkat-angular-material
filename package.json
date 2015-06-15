@@ -5,7 +5,7 @@
   "author": "Antilo0p <rigreyes@gmail.com>",
   "scripts": {
     "pretest": "jshint .",
-    "start": "slc run --cluster 1 --log ~/app-root/logs/bitkat.log",
+    "start": "slc run --cluster off --log ~/app-root/logs/bitkat.log",
     "dev": "nodemon server/server.js",
     "services": "lb-ng server/server.js client/js/services/lb-services.js"
   },
