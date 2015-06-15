@@ -16,6 +16,7 @@ Empresa.findOne({}, function (err, empresa) {
   if (err) return cb(err);
   if (empresa ) {
     console.log('Empresa ya cargada');
+     process.nextTick(cb);   
   }  else {
     console.log('Creando empresa inicial');
    Admin.create([

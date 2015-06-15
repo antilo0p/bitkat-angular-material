@@ -15,6 +15,7 @@ Reservacion.findOne({}, function(err, reservacion) {
   if (err) return cb(err);
 if (reservacion) {
   console.log('Clientes y reservaciones iniciales ya existen!');
+  process.nextTick(cb);
 } else {
   console.log('Creado clientes inciales');
   Cliente.create([
