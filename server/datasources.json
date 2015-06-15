@@ -5,11 +5,11 @@
   },
   "mongoDB": {
     "port": 27017,
-    "database": "bitkat_sa",
+    "database": "bitkat_dev",
     "username":   "",
     "password":   "" ,
     "name": "mongoDB",
-    "connector": "loopback-connector-mongodb",
+    "connector": "mongodb",
     "hostname": "localhost"
   },
   "emailDs": {

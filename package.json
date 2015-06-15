@@ -1,5 +1,5 @@
 {
-  "name": "bitkat_standalone",
+  "name": "bitkat",
   "version": "1.0.1",
   "main": "server/server.js",
   "author": "Antilo0p <rigreyes@gmail.com>",
@@ -16,10 +16,10 @@
     "loopback": "^2.14.0",
     "loopback-boot": "^2.6.5",
     "loopback-datasource-juggler": "^2.19.0",
-    "loopback-connector-mongodb": "*",
     "serve-favicon": "^2.0.1",
-    "moment": "^2.10.3",
-    "later": "*"
+    "loopback-connector-mongodb": "^1.11.0",
+    "later": "^1.1.6",
+    "moment": "^2.10.3"
   },
   "optionalDependencies": {
     "loopback-explorer": "^1.1.0"

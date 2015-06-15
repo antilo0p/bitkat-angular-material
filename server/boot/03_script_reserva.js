@@ -1,6 +1,6 @@
 var dsConfig = require('../datasources.json');
 
-module.exports = function(app) {
+module.exports = function(app, cb) {
 
 var Cliente = app.models.Cliente;
 var Role = app.models.Role;
@@ -12,7 +12,7 @@ var Reservacion = app.models.Reservacion;
 var Proveedores = app.models.Proveedor;
 
 Reservacion.findOne({}, function(err, reservacion) {
-
+  if (err) return cb(err);
 if (reservacion) {
   console.log('Clientes y reservaciones iniciales ya existen!');
 } else {
@@ -21,12 +21,12 @@ if (reservacion) {
       {nombre: 'CLiente Ejemplo', email: 'cliente1@bitkat.com', password: 'cliente', telefono: '33675990' },
       {nombre: 'Nuevo Cliente', email: 'cliente2@bitkat.com', password: 'cliente', telefono: '3316061544'},
     ], function(err, users) {
-     if (err) throw err;
+     if (err) return cb(err);
      console.log('Created clients:', users);
 
      Servicio.findOne({}
       ,function (err, servicio) {
-        if (err) throw err;
+        if (err) return cb(err);
         console.log('servicio adquirido:', servicio);
         var d = new Date();
         var start = d.setHours(d.getHours() + 2); 
@@ -48,11 +48,12 @@ if (reservacion) {
             fecha_creacion: d,
             slot: 1
         }, function(err, reservacion) {
-            if (err) throw err;
+            if (err) return cb(err);
             console.log('Reservacion creada', reservacion);
             reservacion.servicio(servicio);
             reservacion.proveedor(proveedores);
             reservacion.save();
+            process.nextTick(cb);
         });
 
     });

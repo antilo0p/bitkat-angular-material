@@ -1,6 +1,7 @@
 module.exports = {
     mongoDB: {
-            connector: 'loopback-connector-mongodb',
-            url: process.env.OPENSHIFT_MONGODB_DB_URL
+            connector: 'mongodb',
+            url: process.env.OPENSHIFT_MONGODB_DB_URL,
+            database: 'bitkat'
         }
 };
