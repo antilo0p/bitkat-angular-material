@@ -25,19 +25,32 @@ angular
          .accentPalette('pink');
 
     $stateProvider
-      .state('all-categorias', {
+ //     .state('home', {
+ //       url: '/home',
+ //       templateUrl: 'views/all-categorias.html',
+ //       controller: 'CategoriaController'
+ //     })
+      .state('inicio', {
         url: '/home',
-        templateUrl: 'views/all-categorias.html',
         controller: 'CategoriaController'
       })
-      .state('all-servicios', {
+     .state('empresa', {
+        url: '/home/empresa',
+        templateUrl: 'views/empresa.html',
+        controller: 'CategoriaController'
+      })
+     .state('empresa.nosotros', {
+        url: '/home/empresa/nosotros',
+        controller: 'CategoriaController'
+      })
+      .state('todos-servicios', {
         url: '/servicios',
         templateUrl: 'views/all-servicios.html',
         controller: 'ServicioController'
       })
       .state('servicios-de-categoria', {
         url: '/servicios/:id',
-        templateUrl: 'views/all-servicios.html',
+        //templateUrl: 'views/all-servicios.html',
         controller: 'CategoriaServiciosController'
       })
       .state('all-reservaciones', {
@@ -87,7 +100,7 @@ angular
         url: '/sign-up/success',
         templateUrl: 'views/sign-up-success.html'
       });
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/home/empresa');
   }
 ])
  .run(['$rootScope', '$state', function($rootScope, $state) {

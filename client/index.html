@@ -17,7 +17,7 @@
     <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z3"
                 md-component-id="left"
                 md-is-locked-open="$mdMedia('gt-sm')">
-      <md-toolbar class="md-whiteframe-z2">
+        <md-toolbar class="md-whiteframe-z2">
            <span flex></span>
         Categorias
              <span flex></span>
@@ -25,15 +25,15 @@
       <md-content flex role="navigation">
         <md-list>
            <md-list-item>
-              <md-button ui-sref="all-reservaciones"  ng-class="{'selected' : it === ul.selected }">Inicio
+              <md-button ui-sref="empresa"  ui-sref-active="selected">Inicio
              </md-button>
            </md-list-item>
           <md-list-item>
-              <md-button ng-click="ul.showServiceOptions($event)"  ng-class="{'selected' : it === ul.selected }">Nosotros
+              <md-button ng-click="ul.showServiceOptions($event)"  ng-class="{'selected' : it === ul.selected }" ui-sref-active="selected">Nosotros
              </md-button>
            </md-list-item>
           <md-list-item ng-repeat="it in categorias">
-              <md-button ng-click="ul.selectCategory(it)" ng-class="{'selected' : it === ul.selected }">
+              <md-button ng-click="ul.selectCategory(it)" ng-class="{'selected' : it === ul.selected }"  ui-sref="servicios-de-categoria({ id: it.id })">
               {{it.nombre}}
             </md-button>
          </md-list-item>
@@ -65,7 +65,10 @@
   </div>
 
   <md-content flex layout-padding id="content" class="md-padding">
-    <div class="container"><md-content ng-view md-scroll-y flex layout-padding></md-content></div>
+    <div class="container"><md-content ng-view md-scroll-y flex layout-padding>
+    <ui-view>
+    </ui-view>
+    </md-content></div>
       <h2>{{ul.selected.nombre}}</h2>
       <p>{{ul.selected.descripcion}}</p>
     <section class="demo-container md-whiteframe-z2 doc-content">

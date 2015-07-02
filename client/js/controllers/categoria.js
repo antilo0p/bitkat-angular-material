@@ -33,7 +33,7 @@ angular
         .$promise
         .then(function(results) {
           self.categories = results;
-          self.selected = results[0];
+          //self.selected = results[0];
           $scope.categorias= results;
           $rootScope.categorias = results;
         });
@@ -147,6 +147,15 @@ angular
         });
     }
 
+    $scope.$on('categoryLanded', function(event, category ) {
+ //                 selectCategory(category);
+   //               self.selected = category;
+              if (self.selected == null ){
+                  console.log('received categoryLanded');
+                  selectCategory(category);
+              }
+    });
+
     function selectCategory( category ) {
       self.selected = angular.isNumber( category ) ? $scope.categories[category]: category;
       self.toggleCategoriesList();
@@ -226,6 +235,12 @@ angular
             console.log('category servicios', servicios);
             $scope.categoria = categoria;
             $scope.servicios = servicios;
+            $scope.$emit('categoryLanded', $scope.categoria);
         });
   });
+}])
+.controller('EmpresaController', ['$scope', 'Empresa', '$state',
+ '$stateParams',function($scope, Empresa, $state, $stateParams) {
+      $scope.$emit('showEmpresa');
 }]);
+
